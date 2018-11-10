@@ -32,11 +32,11 @@ class CatPhotoTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        /*
+
         [userNameLabel!, photosLikeLabel!, photosDescriptionLabel!, photoTimeIntevalSincePostLabel!].forEach {
             $0.backgroundColor = UIColor.white
         }
-        */
+    
 
         userAvatarImageView.layer.contents = UIImage(named: "placeholder")!.makeCircularImage(with: CGSize(width: userImageHeight, height: userImageHeight))?.cgImage
         userAvatarImageView.backgroundColor = UIColor.white
@@ -153,15 +153,7 @@ extension CatPhotoTableViewCell{
         
         for label in [photosDescriptionLabel!, userNameLabel!] {
             label.layer.shadowColor = UIColor.lightGray.cgColor
-            label.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
-            label.layer.shadowOpacity = 1.0
-            label.layer.shadowRadius = 5.0
- 
- 
-            
-            
-            
-            /*
+           
             let shadow = NSShadow()
             shadow.shadowColor = UIColor.lightGray
             shadow.shadowOffset = CGSize(width: 0.0, height: 5.0)
@@ -170,8 +162,6 @@ extension CatPhotoTableViewCell{
                 mutableAttributedString.addAttribute(NSAttributedString.Key.shadow, value: shadow, range: range)
             }
  
- 
- */
         }
     }
     
