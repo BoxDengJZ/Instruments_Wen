@@ -96,6 +96,21 @@ class PhotoFeedModel {
             let url = URL(string: self.urlString + urlAdditions)
             let session = URLSession(configuration: .ephemeral)
             
+            
+            
+            //  https://github.com/500px/legacy-api-documentation
+            
+            
+            
+            
+            //  https://github.com/500px/legacy-api-documentation/blob/master/endpoints/photo/GET_photos_search.md
+            
+            
+            
+            //  https://api.500px.com/v1/photos/search?term=cat&exclude=Nude,People,Fashion&sort=rating&image_size=3&include_store=store_download&include_states=voted&consumer_key=IM9eKT7fZZc7gjJXrnXVgZlBUFLXeDpkRuH0MeNy&page=1&rpp=4&image_size=4
+            
+            
+            
             self.task = session.dataTask(with: url!, completionHandler: { (data, response, error) in
                 guard let data = data else { return }
                 

@@ -10,12 +10,16 @@ import Foundation
 
 class UserModel {
 //    let dictionaryRepresentation: [String: Any]
+    
+    
     let userID: Int?
     let username: String?
     let firstName: String?
     let lastName: String?
     let fullName: String?
     let city: String?
+    
+    
     let state: String?
     let country: String?
     let about: String?
@@ -28,6 +32,8 @@ class UserModel {
     let affection: Int?
     let friendsCount: Int?
     let followersCount: Int?
+    
+    
     let following: Bool?
 
     init?(withDictionary dictionary:[String: Any]) {

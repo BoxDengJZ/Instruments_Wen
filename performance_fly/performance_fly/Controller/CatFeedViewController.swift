@@ -10,7 +10,7 @@ import UIKit
 import CoreMotion
 
 class CatFeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    private let kCatCellIdentifier = "CatCell"
+    private let kCatCellIdentifier = "CatPhotoTableViewCell"
     private let screensFromBottomToLoadMoreCats: CGFloat = 2.5
     
     private var photoFeed: PhotoFeedModel?
@@ -48,7 +48,9 @@ class CatFeedViewController: UIViewController, UITableViewDataSource, UITableVie
         view.addSubview(tableView)
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
-        tableView.register(CatPhotoTableViewCell.classForCoder(), forCellReuseIdentifier: kCatCellIdentifier)
+        
+        
+        tableView.register(UINib(nibName: kCatCellIdentifier, bundle: nil), forCellReuseIdentifier: kCatCellIdentifier)
         
         tableView.addSubview(activityIndicatorView)
     }

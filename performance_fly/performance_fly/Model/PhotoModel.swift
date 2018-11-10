@@ -20,6 +20,10 @@ class PhotoModel: NSObject {
     var likesCount: UInt?
     
     var ownerUserProfile: UserModel?
+    
+    
+    var width: CGFloat?
+    var height: CGFloat?
 
     init(photoDictionary: [String: Any]) {
         
@@ -38,7 +42,15 @@ class PhotoModel: NSObject {
         uploadDateString = "13h"
         
         ownerUserProfile = UserModel(withDictionary: photoDictionary)
+        
+        
+        width = photoDictionary["width"] as? CGFloat
+        height = photoDictionary["height"] as? CGFloat
     }
+    
+    
+    
+    
     
     func descriptionAttributedString(withFontSize size: CGFloat) -> NSAttributedString {
         guard let username = ownerUserProfile?.username, let descriptionText = descriptionText else { return NSAttributedString() }
