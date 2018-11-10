@@ -32,7 +32,12 @@ class CatPhotoTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        /*
+        [userNameLabel!, photosLikeLabel!, photosDescriptionLabel!, photoTimeIntevalSincePostLabel!].forEach {
+            $0.backgroundColor = UIColor.white
+        }
+        */
+
         userAvatarImageView.layer.contents = UIImage(named: "placeholder")!.makeCircularImage(with: CGSize(width: userImageHeight, height: userImageHeight))?.cgImage
         userAvatarImageView.backgroundColor = UIColor.white
         userAvatarImageView.layer.cornerRadius = userImageHeight/2.0
@@ -88,16 +93,13 @@ class CatPhotoTableViewCell: UITableViewCell {
         
         self.imageHeightConstraint.constant = (photoModel.height!/photoModel.width!) * self.contentView.bounds.size.width
         
-
-        userNameLabel.sizeToFit()
-        photoTimeIntevalSincePostLabel.sizeToFit()
-        photosLikeLabel.sizeToFit()
-        photosDescriptionLabel.sizeToFit()
-        
+        [userNameLabel!, photosLikeLabel!, photosDescriptionLabel!, photoTimeIntevalSincePostLabel!].forEach {
+            $0.sizeToFit()
+        }
+   
         var rect = photosDescriptionLabel.frame
         let availableWidth = bounds.size.width - 20
         rect.size = photosDescriptionLabel.sizeThatFits(CGSize(width: availableWidth, height: CGFloat.greatestFiniteMagnitude))
-        
         photosDescriptionLabel.frame = rect
         
         
@@ -149,11 +151,27 @@ extension CatPhotoTableViewCell{
         isOpaque = false
         alpha = 0.1
         
-        for view in [photosDescriptionLabel!, userNameLabel!] {
-            view.layer.shadowColor = UIColor.lightGray.cgColor
-            view.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
-            view.layer.shadowOpacity = 1.0
-            view.layer.shadowRadius = 5.0
+        for label in [photosDescriptionLabel!, userNameLabel!] {
+            label.layer.shadowColor = UIColor.lightGray.cgColor
+            label.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
+            label.layer.shadowOpacity = 1.0
+            label.layer.shadowRadius = 5.0
+ 
+ 
+            
+            
+            
+            /*
+            let shadow = NSShadow()
+            shadow.shadowColor = UIColor.lightGray
+            shadow.shadowOffset = CGSize(width: 0.0, height: 5.0)
+            if let mutableAttributedString = label.attributedText as? NSMutableAttributedString{
+                let range = NSRange(location: 0, length: mutableAttributedString.string.count)
+                mutableAttributedString.addAttribute(NSAttributedString.Key.shadow, value: shadow, range: range)
+            }
+ 
+ 
+ */
         }
     }
     
