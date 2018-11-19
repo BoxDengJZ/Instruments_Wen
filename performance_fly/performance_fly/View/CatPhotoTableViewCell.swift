@@ -152,11 +152,10 @@ extension CatPhotoTableViewCell{
         alpha = 0.1
         
         for label in [photosDescriptionLabel!, userNameLabel!] {
-            label.layer.shadowColor = UIColor.lightGray.cgColor
-           
             let shadow = NSShadow()
             shadow.shadowColor = UIColor.lightGray
             shadow.shadowOffset = CGSize(width: 0.0, height: 5.0)
+            shadow.shadowBlurRadius = 5.0
             if let mutableAttributedString = label.attributedText as? NSMutableAttributedString{
                 let range = NSRange(location: 0, length: mutableAttributedString.string.count)
                 mutableAttributedString.addAttribute(NSAttributedString.Key.shadow, value: shadow, range: range)
