@@ -18,7 +18,7 @@ class CatFeedViewController: UIViewController, UITableViewDataSource, UITableVie
     private let activityIndicatorView = UIActivityIndicatorView(style: .gray)
     
     private let motionManager = CMMotionManager()
-
+    private var lastY = 0.0
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -32,8 +32,6 @@ class CatFeedViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         
-        let timer = Timer(timeInterval: 1.0, target: self, selector: #selector(CatFeedViewController.sendLogs), userInfo: nil, repeats: true)
-        RunLoop.main.add(timer, forMode: .common)
     }
     
     
@@ -59,13 +57,15 @@ class CatFeedViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.addSubview(activityIndicatorView)
         motionManager.startDeviceMotionUpdates(to: .main, withHandler:{ deviceMotion, error in
             guard let deviceMotion = deviceMotion else { return }
-            
+            guard abs(self.lastY - deviceMotion.rotationRate.y) > 0.1 else { return }
+            self.lastY = deviceMotion.rotationRate.y
             let xRotationRate = CGFloat(deviceMotion.rotationRate.x)
             let yRotationRate = CGFloat(deviceMotion.rotationRate.y)
             let zRotationRate = CGFloat(deviceMotion.rotationRate.z)
             
 
-            // this is all allocating arrays and memory on the heap.
+            print("y \(yRotationRate) and x \(xRotationRate) and z\(zRotationRate)")
+
             
               if abs(yRotationRate) > (abs(xRotationRate) + abs(zRotationRate)) {
                 for cell in self.tableView.visibleCells as! [CatPhotoTableViewCell] {
@@ -194,44 +194,3 @@ class CatFeedViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 }
 
-
-extension CatFeedViewController {
-    
-    // 模拟发日志
-    @objc func sendLogs() {
-        let headers = [
-            "cookie": "foo=bar; bar=baz",
-            "accept": "application/json",
-            "content-type": "application/x-www-form-urlencoded"
-        ]
-        
-        var postData = "foo=bar".data(using: String.Encoding.utf8)!
-        postData.append("&bar=baz".data(using: String.Encoding.utf8)!)
-        
-        var request = URLRequest(
-            url: URL(string: "https://mockbin.org/bin/d7fc711e-dc00-4a53-93e2-870a35163685?foo=bar&foo=baz")!,
-            cachePolicy: .reloadIgnoringLocalCacheData,
-            timeoutInterval: 10)
-        
-        request.httpMethod = "POST"
-        request.allHTTPHeaderFields = headers
-        request.httpBody = postData
-        let configuration = URLSessionConfiguration.default
-        let session = URLSession(configuration: configuration, delegate: self, delegateQueue: .main)
-        let dataTask = session.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                print(error)
-            }
-            if let response = response {
-                print(response)
-            }
-        }
-        dataTask.resume()
-    }
-}
-
-
-
-extension CatFeedViewController: URLSessionDelegate {
-    
-}

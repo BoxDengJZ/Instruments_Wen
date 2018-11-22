@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		235BBE2E2196BCD900480C86 /* CatPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235BBE2C2196BCD900480C86 /* CatPhotoTableViewCell.swift */; };
 		235BBE2F2196BCD900480C86 /* CatPhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 235BBE2D2196BCD900480C86 /* CatPhotoTableViewCell.xib */; };
+		23E6F8D421A7066B003E93EA /* NetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E6F8D321A7066B003E93EA /* NetManager.swift */; };
 		23FD2D8D218C786400C65A51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FD2D8C218C786400C65A51 /* AppDelegate.swift */; };
 		23FD2D92218C786400C65A51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23FD2D90218C786400C65A51 /* Main.storyboard */; };
 		23FD2D94218C786700C65A51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23FD2D93218C786700C65A51 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		235BBE2C2196BCD900480C86 /* CatPhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatPhotoTableViewCell.swift; sourceTree = "<group>"; };
 		235BBE2D2196BCD900480C86 /* CatPhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatPhotoTableViewCell.xib; sourceTree = "<group>"; };
+		23E6F8D321A7066B003E93EA /* NetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetManager.swift; sourceTree = "<group>"; };
 		23FD2D89218C786400C65A51 /* performance_fly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = performance_fly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23FD2D8C218C786400C65A51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23FD2D91218C786400C65A51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -65,6 +67,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23E6F8D221A7065B003E93EA /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				23E6F8D321A7066B003E93EA /* NetManager.swift */,
+			);
+			path = Net;
+			sourceTree = "<group>";
+		};
 		23FD2D80218C786400C65A51 = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +94,7 @@
 		23FD2D8B218C786400C65A51 /* performance_fly */ = {
 			isa = PBXGroup;
 			children = (
+				23E6F8D221A7065B003E93EA /* Net */,
 				23FD2D8C218C786400C65A51 /* AppDelegate.swift */,
 				23FD2D93218C786700C65A51 /* Assets.xcassets */,
 				23FD2DAA218C79A100C65A51 /* Controller */,
@@ -231,6 +242,7 @@
 				23FD2DB4218C79FA00C65A51 /* UserModel.swift in Sources */,
 				23FD2DBA218C7C1700C65A51 /* AsyncImageView.swift in Sources */,
 				23FD2D8D218C786400C65A51 /* AppDelegate.swift in Sources */,
+				23E6F8D421A7066B003E93EA /* NetManager.swift in Sources */,
 				23FD2DA9218C793E00C65A51 /* Utilities.m in Sources */,
 				23FD2DB3218C79FA00C65A51 /* PhotoFeedModel.swift in Sources */,
 				23FD2DC2218C8E1A00C65A51 /* LocationModel.swift in Sources */,
