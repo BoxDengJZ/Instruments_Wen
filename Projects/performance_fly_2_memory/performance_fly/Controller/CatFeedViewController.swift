@@ -57,7 +57,7 @@ class CatFeedViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.addSubview(activityIndicatorView)
         motionManager.startDeviceMotionUpdates(to: .main, withHandler:{ deviceMotion, error in
             guard let deviceMotion = deviceMotion else { return }
-        //    guard abs(self.lastY - deviceMotion.rotationRate.y) > 0.1 else { return }
+            guard abs(self.lastY - deviceMotion.rotationRate.y) > 0.1 else { return }
             self.lastY = deviceMotion.rotationRate.y
             let xRotationRate = CGFloat(deviceMotion.rotationRate.x)
             let yRotationRate = CGFloat(deviceMotion.rotationRate.y)
@@ -66,6 +66,7 @@ class CatFeedViewController: UIViewController, UITableViewDataSource, UITableVie
 
             // print("y \(yRotationRate) and x \(xRotationRate) and z\(zRotationRate)")
 
+            
             //  y > z, 这个动作是翘起来
             //  y > x + z, 这个动作是斜着翘起来
               if abs(yRotationRate) > (abs(xRotationRate) + abs(zRotationRate)) {
