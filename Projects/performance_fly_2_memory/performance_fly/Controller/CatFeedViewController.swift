@@ -54,6 +54,9 @@ class CatFeedViewController: UIViewController, UITableViewDataSource, UITableVie
 
         refreshFeed()
         motionManager.startDeviceMotionUpdates(to: .main, withHandler:{ [weak self ] deviceMotion, error in
+            
+            //  guard let `self` = self else { return }
+            
             guard let deviceMotion = deviceMotion else { return }
             guard abs(self?.lastY ?? 0 - deviceMotion.rotationRate.y) > 0.1 else { return }
             self?.lastY = deviceMotion.rotationRate.y

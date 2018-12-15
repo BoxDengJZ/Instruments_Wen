@@ -6,7 +6,7 @@ import UIKit
 class CatPhotoTableViewCell: UITableViewCell {
     let userImageHeight:CGFloat = 30
     
-    private var photoModel: PhotoModel? = nil
+    private var photoModel: PhotoModel!
     
     @IBOutlet weak var userAvatarImageView: AsyncImageView!
     @IBOutlet weak var photoImageView: AsyncImageView!
@@ -137,12 +137,18 @@ extension CatPhotoTableViewCell{
     //MARK: Location
     
     func reverseGeocode(locationForPhoto photoModel: PhotoModel) {
-        photoModel.location?.reverseGeocodedLocation(completion: {[weak self, weak photoModel] (locationModel) in
-            self?.photoLocationLabel.attributedText = photoModel?.locationAttributedString(withFontSize: 14.0)
+        photoModel.location?.reverseGeocodedLocation(completion: { [weak photoModel] (locationModel) in
+            self.photoLocationLabel.attributedText = photoModel?         .locationAttributedString(withFontSize: 14.0)
+            self.photoLocationLabel.sizeToFit()
+            self.layoutIfNeeded()
         })
     }
     
 
+    
+    //  [weak self, weak photoModel]
+    
+    
     
     //MARK: Motion
     func panImage(with yRotation: CGFloat) {
