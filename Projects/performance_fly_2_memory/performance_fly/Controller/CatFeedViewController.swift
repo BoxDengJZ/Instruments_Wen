@@ -27,8 +27,6 @@ class CatFeedViewController: UIViewController, UITableViewDataSource, UITableVie
     init() {
         super.init(nibName: nil, bundle: nil)
         navigationItem.title = "500PX"
-        
-        tableView.autoresizingMask = UIView.AutoresizingMask.flexibleWidth;
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -44,33 +42,30 @@ class CatFeedViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         photoFeed = PhotoFeedModel(imageSize: imageSizeForScreenWidth())
         view.backgroundColor = UIColor.white
-
-        refreshFeed()
-
-        view.addSubview(tableView)
+        
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
         
-        
         tableView.register(UINib(nibName: kCatCellIdentifier, bundle: nil), forCellReuseIdentifier: kCatCellIdentifier)
-        
+        view.addSubview(tableView)
         tableView.addSubview(activityIndicatorView)
-        motionManager.startDeviceMotionUpdates(to: .main, withHandler:{ deviceMotion, error in
+        tableView.frame = view.bounds
+        activityIndicatorView.center = CGPoint(x: view.bounds.size.width/2.0, y: view.bounds.size.height/2.0)
+
+        refreshFeed()
+        motionManager.startDeviceMotionUpdates(to: .main, withHandler:{ [weak self ] deviceMotion, error in
             guard let deviceMotion = deviceMotion else { return }
-            guard abs(self.lastY - deviceMotion.rotationRate.y) > 0.1 else { return }
-            self.lastY = deviceMotion.rotationRate.y
+            guard abs(self?.lastY ?? 0 - deviceMotion.rotationRate.y) > 0.1 else { return }
+            self?.lastY = deviceMotion.rotationRate.y
             let xRotationRate = CGFloat(deviceMotion.rotationRate.x)
             let yRotationRate = CGFloat(deviceMotion.rotationRate.y)
             let zRotationRate = CGFloat(deviceMotion.rotationRate.z)
-            
-
-            // print("y \(yRotationRate) and x \(xRotationRate) and z\(zRotationRate)")
 
             
             //  y > z, 这个动作是翘起来
             //  y > x + z, 这个动作是斜着翘起来
               if abs(yRotationRate) > (abs(xRotationRate) + abs(zRotationRate)) {
-                for cell in self.tableView.visibleCells as! [CatPhotoTableViewCell] {
+                for cell in self?.tableView.visibleCells as! [CatPhotoTableViewCell] {
                     cell.panImage(with: yRotationRate)
                 }
               }
@@ -91,21 +86,12 @@ class CatFeedViewController: UIViewController, UITableViewDataSource, UITableVie
         })
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
-        activityIndicatorView.center = CGPoint(x: view.bounds.size.width/2.0, y: view.bounds.size.height/2.0)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
+
     func refreshFeed() {
         guard let photoFeed = photoFeed else { return }
         
         activityIndicatorView.startAnimating()
-        photoFeed.refreshFeed(with: 4) { (photoModels) in
+        photoFeed.refreshFeed(with: 4) { [unowned self] (photoModels) in
             self.activityIndicatorView.stopAnimating()
             self.insert(newRows: photoModels)
             self.loadPage()
@@ -117,7 +103,6 @@ class CatFeedViewController: UIViewController, UITableViewDataSource, UITableVie
 
         photoFeed.requestPage(with: 20) { (photoModels) in
             self.insert(newRows: photoModels)
-            self.requestComments(forPhotos: photoModels)
         }
     }
     
@@ -130,14 +115,8 @@ class CatFeedViewController: UIViewController, UITableViewDataSource, UITableVie
         for i in (newTotal - photoModels.count)..<newTotal {
             indexPaths.append(IndexPath(row: i, section: 0))
         }
-        tableView.insertRows(at: indexPaths, with: .none)
+        tableView.insertRows(at: indexPaths, with: .automatic)
     }
-    
-    
-    func requestComments(forPhotos photoModels: [PhotoModel]){
-        
-    }
-    
     
     
     //MARK: Table View Delegate
@@ -147,7 +126,8 @@ class CatFeedViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.backgroundColor = UIColor.lightGray
         //TODO: leave this in as an error left behind from some other developer.
         //  The cells used to have round corners but now they dont
-        
+        cell.layer.cornerRadius = 40.0
+        cell.clipsToBounds = true
         cell.updateCell(with: photoFeed?.object(at: indexPath.row))
         return cell
     }
@@ -161,9 +141,6 @@ class CatFeedViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         return 0
     }
-    
-    
-    
     
     
     

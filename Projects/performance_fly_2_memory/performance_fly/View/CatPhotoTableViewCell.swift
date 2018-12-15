@@ -8,8 +8,6 @@ class CatPhotoTableViewCell: UITableViewCell {
     
     private var photoModel: PhotoModel? = nil
     
-
-    
     @IBOutlet weak var userAvatarImageView: AsyncImageView!
     @IBOutlet weak var photoImageView: AsyncImageView!
     @IBOutlet weak var photoTimeIntevalSincePostLabel: UILabel!
@@ -23,16 +21,6 @@ class CatPhotoTableViewCell: UITableViewCell {
     @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var photoLocationLabel: UILabel!
-    
-    
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -53,8 +41,8 @@ class CatPhotoTableViewCell: UITableViewCell {
         photoImageView.layer.cornerRadius = 2.0
 
         
-        self.userNameLabel.textColor = UIColor.darkBlue()
-        self.photoLocationLabel.textColor = UIColor.darkGray
+        userNameLabel.textColor = UIColor.darkBlue()
+        photoLocationLabel.textColor = UIColor.darkGray
         
     }
     
@@ -66,17 +54,7 @@ class CatPhotoTableViewCell: UITableViewCell {
     func downloadAndProcessUserAvatar(forPhoto photoModel: PhotoModel) {
         UIImage.downloadImage(for: photoModel.url) { (image, realURL) in
             photoModel.url = realURL
-            if self.photoModel == photoModel, let image = image {
-                
-                //   保证任务唯一
-                
-                
-                //  这句话很重要 self.photoModel == photoModel,
-                //  KV
-                //  SDWebImage 的精华
-                
-                photoModel.url = realURL
-                
+            if self.photoModel == photoModel{
                 self.userAvatarImageView.image = image
             }
         }
@@ -99,8 +77,6 @@ class CatPhotoTableViewCell: UITableViewCell {
         
         addShadows()
         
-        
-        
         self.imageHeightConstraint.constant = (photoModel.height!/photoModel.width!) * self.contentView.bounds.size.width
         
         [userNameLabel!, photosLikeLabel!, photosDescriptionLabel!, photoTimeIntevalSincePostLabel!].forEach {
@@ -111,7 +87,6 @@ class CatPhotoTableViewCell: UITableViewCell {
         let availableWidth = bounds.size.width - 20
         rect.size = photosDescriptionLabel.sizeThatFits(CGSize(width: availableWidth, height: CGFloat.greatestFiniteMagnitude))
         photosDescriptionLabel.frame = rect
-        
         
         UIImage.downloadImage(for: photoModel.url) { (image, realURL) in
             photoModel.url = realURL
@@ -124,36 +99,10 @@ class CatPhotoTableViewCell: UITableViewCell {
         
     }
     
-    
-    
-
-    
-    override func prepareForReuse() {
-        userAvatarImageView.layer.contents = nil
-        photoImageView.layer.contents = nil
-        
-        userAvatarImageView.image = UIImage(named: "placeholder")
-        photoImageView.image = UIImage(named: "placeholder")
-        
-        
-        userNameLabel.attributedText                   = nil
-        photoTimeIntevalSincePostLabel.attributedText = nil
-        photosLikeLabel.attributedText                 = nil
-        photosDescriptionLabel.attributedText           = nil
-        photoLocationLabel.attributedText = nil
-        
-    }
-    
-    
-
 }
 
 extension CatPhotoTableViewCell {
 
-    
-    
- 
-    
     class func height(forPhoto photoModel: PhotoModel, with width: CGFloat) -> CGFloat {
 
         let photoHeight = width * (photoModel.height!/photoModel.width!)
@@ -190,21 +139,10 @@ extension CatPhotoTableViewCell{
     func reverseGeocode(locationForPhoto photoModel: PhotoModel) {
         photoModel.location?.reverseGeocodedLocation(completion: {[weak self, weak photoModel] (locationModel) in
             self?.photoLocationLabel.attributedText = photoModel?.locationAttributedString(withFontSize: 14.0)
-         //   self?.photoLocationLabel.sizeToFit()
-            
-           /* DispatchQueue.main.async {
-                self?.updateConstraints()
-                self?.setNeedsLayout()
-            }
- */
         })
     }
     
-    
-    // solve: [weak photoModel]
-    //  [weak self, weak photoModel
-    
-    
+
     
     //MARK: Motion
     func panImage(with yRotation: CGFloat) {

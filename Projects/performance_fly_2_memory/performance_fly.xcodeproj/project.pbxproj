@@ -23,11 +23,8 @@
 		23FD2DB2218C79FA00C65A51 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FD2DAE218C79FA00C65A51 /* PhotoModel.swift */; };
 		23FD2DB3218C79FA00C65A51 /* PhotoFeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FD2DAF218C79FA00C65A51 /* PhotoFeedModel.swift */; };
 		23FD2DB4218C79FA00C65A51 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FD2DB0218C79FA00C65A51 /* UserModel.swift */; };
-		23FD2DB5218C79FA00C65A51 /* ImageURLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FD2DB1218C79FA00C65A51 /* ImageURLModel.swift */; };
 		23FD2DBA218C7C1700C65A51 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FD2DB8218C7C1700C65A51 /* AsyncImageView.swift */; };
-		23FD2DC1218C8E1A00C65A51 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FD2DBE218C8E1A00C65A51 /* CommentModel.swift */; };
 		23FD2DC2218C8E1A00C65A51 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FD2DBF218C8E1A00C65A51 /* LocationModel.swift */; };
-		23FD2DC3218C8E1A00C65A51 /* CommentFeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FD2DC0218C8E1A00C65A51 /* CommentFeedModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,11 +48,8 @@
 		23FD2DAE218C79FA00C65A51 /* PhotoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		23FD2DAF218C79FA00C65A51 /* PhotoFeedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFeedModel.swift; sourceTree = "<group>"; };
 		23FD2DB0218C79FA00C65A51 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		23FD2DB1218C79FA00C65A51 /* ImageURLModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageURLModel.swift; sourceTree = "<group>"; };
 		23FD2DB8218C7C1700C65A51 /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
-		23FD2DBE218C8E1A00C65A51 /* CommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		23FD2DBF218C8E1A00C65A51 /* LocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
-		23FD2DC0218C8E1A00C65A51 /* CommentFeedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentFeedModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,13 +137,10 @@
 		23FD2DAD218C79FA00C65A51 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				23FD2DC0218C8E1A00C65A51 /* CommentFeedModel.swift */,
-				23FD2DBE218C8E1A00C65A51 /* CommentModel.swift */,
 				23FD2DBF218C8E1A00C65A51 /* LocationModel.swift */,
 				23FD2DAE218C79FA00C65A51 /* PhotoModel.swift */,
 				23FD2DAF218C79FA00C65A51 /* PhotoFeedModel.swift */,
 				23FD2DB0218C79FA00C65A51 /* UserModel.swift */,
-				23FD2DB1218C79FA00C65A51 /* ImageURLModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -238,8 +229,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23FD2DB5218C79FA00C65A51 /* ImageURLModel.swift in Sources */,
-				23FD2DC1218C8E1A00C65A51 /* CommentModel.swift in Sources */,
 				23FD2DB2218C79FA00C65A51 /* PhotoModel.swift in Sources */,
 				23FD2DAC218C79A200C65A51 /* CatFeedViewController.swift in Sources */,
 				23FD2DB4218C79FA00C65A51 /* UserModel.swift in Sources */,
@@ -252,7 +241,6 @@
 				23FD2DC2218C8E1A00C65A51 /* LocationModel.swift in Sources */,
 				235BBE2E2196BCD900480C86 /* CatPhotoTableViewCell.swift in Sources */,
 				23FD2DA8218C793E00C65A51 /* WindowWithStatusBar.swift in Sources */,
-				23FD2DC3218C8E1A00C65A51 /* CommentFeedModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
