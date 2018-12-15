@@ -34,6 +34,13 @@ iOS 性能优化
 <hr>
 
 
+### 相关代码：
+
+
+<hr>
+
+
+#### 内存相关
 
 [project:   分析内存消耗的开始](https://github.com/BoxDengJZ/Instruments_Wen/archive/v1.3.2.zip)
 
@@ -54,7 +61,7 @@ iOS 性能优化
 
 
 
-### Xcode Energy Gauge 分析电量消耗：给 CoreMotion 更新设置过滤，干掉频繁的日志上传
+#### Xcode Energy Gauge 分析电量消耗：给 CoreMotion 更新设置过滤，干掉频繁的日志上传
 
 
 [project:   分析电量消耗的开始](https://github.com/BoxDengJZ/Instruments_Wen/archive/v1.2.0.zip)
@@ -67,7 +74,7 @@ iOS 性能优化
 
 
 
-### UI 性能优化技术点: 处理掉混色、离屏渲染
+#### UI 性能优化技术点: 处理掉混色、离屏渲染
 
 
 
