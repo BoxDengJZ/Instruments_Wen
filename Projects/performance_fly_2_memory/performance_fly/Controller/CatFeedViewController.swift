@@ -139,7 +139,7 @@ class CatFeedViewController: UIViewController, UITableViewDataSource, UITableVie
         if let photoModel = photoFeed?.object(at: indexPath.row) {
             return CatPhotoTableViewCell.height(forPhoto: photoModel, with: view.bounds.size.width)
         }
-        return 0
+        return CGFloat.leastNonzeroMagnitude
     }
     
     
