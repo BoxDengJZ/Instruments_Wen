@@ -27,16 +27,28 @@ class LocationModel {
     }
 
     
+    
+    
+    
+    
+    
     func reverseGeocodedLocation(completion: @escaping ((LocationModel) -> Void)) {
         if placemark != nil {
             completion(self)
-        } else {
+        }
+        else {
             placeMarkCallback = completion
             if !placeMarkFetchInProgress {
                 beginReverseGeocodingLocationFromCoordinates()
             }
         }
     }
+    
+    
+    
+    
+    
+    
     
     
 
@@ -59,6 +71,14 @@ class LocationModel {
             }
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
     
     private func locationStringFromPlacemark() -> String {
         guard let placemark = placemark else {

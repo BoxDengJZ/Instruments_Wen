@@ -188,15 +188,22 @@ extension CatPhotoTableViewCell{
     //MARK: Location
     
     func reverseGeocode(locationForPhoto photoModel: PhotoModel) {
-        photoModel.location?.reverseGeocodedLocation(completion: { (locationModel) in
-            self.photoLocationLabel.attributedText = photoModel.locationAttributedString(withFontSize: 14.0)
-            self.photoLocationLabel.sizeToFit()
+        photoModel.location?.reverseGeocodedLocation(completion: {[weak self, weak photoModel] (locationModel) in
+            self?.photoLocationLabel.attributedText = photoModel?.locationAttributedString(withFontSize: 14.0)
+         //   self?.photoLocationLabel.sizeToFit()
             
-            DispatchQueue.main.async {
-                
+           /* DispatchQueue.main.async {
+                self?.updateConstraints()
+                self?.setNeedsLayout()
             }
+ */
         })
     }
+    
+    
+    // solve: [weak photoModel]
+    //  [weak self, weak photoModel
+    
     
     
     //MARK: Motion
