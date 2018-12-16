@@ -43,17 +43,17 @@ iOS 性能优化
 
 
 
-[project:   分析内存消耗的开始](https://github.com/BoxDengJZ/Instruments_Wen/archive/v1.3.2.zip)
+[project:   分析内存消耗的开始](https://github.com/BoxDengJZ/Instruments_Wen/archive/v1.3.3.zip)
 
 用 performance_fly_2_memory
 
-[project:   分析内存消耗第一阶段完成](https://github.com/BoxDengJZ/Instruments_Wen/archive/v1.3.3.zip)
+[project:   分析内存消耗第一阶段完成](https://github.com/BoxDengJZ/Instruments_Wen/archive/v1.3.4.zip)
 
 
 
 
 
-##### 开 Xode 僵尸对象检测， 使用 zombie object, 检测指针的过早释放( 不当释放 )
+##### 开 Xode 僵尸对象检测， 使用 zombie object, 检测内存错误、指针的过早释放
 
 
 [project:   分析内存消耗第二阶段开始](https://github.com/BoxDengJZ/Instruments_Wen/archive/v1.3.4.zip)
