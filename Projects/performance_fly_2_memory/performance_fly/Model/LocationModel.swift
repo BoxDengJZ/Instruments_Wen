@@ -31,12 +31,19 @@ class LocationModel {
     
     
     
+    // to check if we are saving that
+    
+    //  it does look like it is marked @escaping
+    
     
     func reverseGeocodedLocation(completion: @escaping ((LocationModel) -> Void)) {
         if placemark != nil {
             completion(self)
         }
         else {
+            
+            // 查看 completion
+            //  it looks like right here we do retain this block
             placeMarkCallback = completion
             if !placeMarkFetchInProgress {
                 beginReverseGeocodingLocationFromCoordinates()

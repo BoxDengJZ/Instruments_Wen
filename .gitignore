@@ -5,7 +5,7 @@
 ## Build generated
 build/
 DerivedData/
-
+ProjectsObjC/AFN/Pods
 ## Various settings
 *.pbxuser
 !default.pbxuser

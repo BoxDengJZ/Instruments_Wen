@@ -55,11 +55,11 @@ class CatFeedViewController: UIViewController, UITableViewDataSource, UITableVie
         refreshFeed()
         motionManager.startDeviceMotionUpdates(to: .main, withHandler:{ [weak self ] deviceMotion, error in
             
-            //  guard let `self` = self else { return }
+            guard let `self` = self else { return }
             
             guard let deviceMotion = deviceMotion else { return }
-            guard abs(self?.lastY ?? 0 - deviceMotion.rotationRate.y) > 0.1 else { return }
-            self?.lastY = deviceMotion.rotationRate.y
+            guard abs(self.lastY - deviceMotion.rotationRate.y) > 0.1 else { return }
+            self.lastY = deviceMotion.rotationRate.y
             let xRotationRate = CGFloat(deviceMotion.rotationRate.x)
             let yRotationRate = CGFloat(deviceMotion.rotationRate.y)
             let zRotationRate = CGFloat(deviceMotion.rotationRate.z)
@@ -68,7 +68,7 @@ class CatFeedViewController: UIViewController, UITableViewDataSource, UITableVie
             //  y > z, 这个动作是翘起来
             //  y > x + z, 这个动作是斜着翘起来
               if abs(yRotationRate) > (abs(xRotationRate) + abs(zRotationRate)) {
-                for cell in self?.tableView.visibleCells as! [CatPhotoTableViewCell] {
+                for cell in self.tableView.visibleCells as! [CatPhotoTableViewCell] {
                     cell.panImage(with: yRotationRate)
                 }
               }

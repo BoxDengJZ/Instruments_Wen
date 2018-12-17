@@ -144,6 +144,7 @@ extension CatPhotoTableViewCell{
     }
     
 
+
     
     //MARK: Motion
     func panImage(with yRotation: CGFloat) {
