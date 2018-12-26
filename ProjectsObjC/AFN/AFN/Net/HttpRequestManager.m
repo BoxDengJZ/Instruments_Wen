@@ -1,10 +1,3 @@
-//
-//   NetworkManager.m
-//  ZTOBestSeller
-//
-//  Created by   on 2017/10/9.
-//  Copyright © 2017年 ZTO. All rights reserved.
-//
 
 #import "HttpRequestManager.h"
 
